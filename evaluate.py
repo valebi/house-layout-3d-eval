@@ -229,7 +229,11 @@ if __name__ == "__main__":
         errors = layout_depth_util.eval_layout_depth(scenes, base_pred_path, base_annots_path)
         print(errors)
         mean = errors.mean(axis=0)
+        print("Mean errors:")
         print(mean)
+        std = errors.std(axis=0)
+        print("Errors std:")
+        print(std)
     else:
         # Compute entity distances for the specified entity type.
         if task == "windows":
@@ -247,13 +251,22 @@ if __name__ == "__main__":
 
 
         df = pd.DataFrame(scene_f1)
+
+        df_std = df.std(axis=1)
         
+        print("Full F1 scores:")
+        print(df)
         df = df.mean(axis=1) # average across scenes
         df.index = [f"Threshold={thr:.2f}" for thr, score in avg_f1_by_threshold.items()]
         
+        print("Average F1 scores:")
         print(df)
+        print("std:")
+        print(df_std)
         print("avg f1:")
         print(df.mean(axis=0))
+        print("std f1:")
+        print(pd.DataFrame(scene_f1).mean(axis=0).std(axis=0))
     
 
 

@@ -215,15 +215,11 @@ def eval_layout_depth(scenes, prediction_dir, dataset_root, device="cuda"):
     """
     errors = {}
     for scene_id in scenes:
-        os.system(f"cp /mnt/usb_ssd/bieriv/opennerf-data/matterport/v1/scans/{scene_id}/poisson_meshes/{scene_id}_10.ply /mnt/usb_ssd/bieriv/HouseLayout3D_huggingface/original_matterport_meshes/{scene_id}.ply")
-        continue
-    raise ValueError("No scene_id found in the dataset_root")
-        # /mnt/usb_ssd/bieriv/opennerf-data/matterport/v1/scans/zsNo4HB9uLZ/poisson_meshes
-        # pose_info = nerfstudio_transforms_to_poses(f"{dataset_root}/poses/{scene_id}.json")
-        # prediction_path = f"{prediction_dir}/{scene_id}.ply"
-        # gt_path = f"{dataset_root}/structures/{scene_id}.obj"
+        pose_info = nerfstudio_transforms_to_poses(f"{dataset_root}/poses/{scene_id}.json")
+        prediction_path = f"{prediction_dir}/{scene_id}.ply"
+        gt_path = f"{dataset_root}/structures/{scene_id}.obj"
                 
-        # errors[scene_id] = compute_scene_error(prediction_path, gt_path, pose_info, device=device)
+        errors[scene_id] = compute_scene_error(prediction_path, gt_path, pose_info, device=device)
 
     errors_df = pd.DataFrame(errors).T
     return errors_df
