@@ -1,6 +1,6 @@
 # HouseLayout3D: A Benchmark Dataset for 3D Layout Estimation in the Wild
 
-[Get the data on Hugging Face Hub](https://huggingface.co/datasets/bieriv/HouseLayout3D)
+[Get the data on Hugging Face](https://huggingface.co/datasets/bieriv/HouseLayout3D)
 
 
 **HouseLayout3D** is a challenging benchmark dataset for **3D layout estimation in large-scale, multi-floor buildings**. It is built upon real-world building scans from [Matterport3D](https://niessner.github.io/Matterport/), and provides detailed annotations of structural elements across up to five floors and forty rooms per building. The dataset is designed to support research in scene understanding, indoor mapping, and robotics applications that require vectorized, object-free representations of indoor spaces.
